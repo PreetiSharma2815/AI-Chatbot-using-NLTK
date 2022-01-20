@@ -61,8 +61,6 @@ def create_bot_corpus(words, classes, word_tags_list, ignore_words):
     return stem_words, classes
 
 
-
-
 # Training Dataset: 
 # Input Text----> as Bag of Words 
 # Tags-----------> as Label
@@ -122,8 +120,10 @@ def train_bot_model(train_x, train_y):
 
 
 # Calling methods
-train_x, train_y = preprocess_train_data(stem_words, classes, word_tags_list)    
 
 stem_words, classes = create_bot_corpus(words, classes, word_tags_list, ignore_words)
 
-train_bot_model(train_x, train_y)
+train_x, train_y = preprocess_train_data(stem_words, classes, word_tags_list)
+
+
+# train_bot_model(train_x, train_y)
