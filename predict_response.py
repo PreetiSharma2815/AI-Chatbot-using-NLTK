@@ -3,7 +3,6 @@ import nltk
 nltk.download('punkt')
 nltk.download('wordnet')
 
-
 from nltk.stem import PorterStemmer
 stemmer = PorterStemmer()
 ignore_words = ['?', '!',',','.', "'s", "'m"]
@@ -15,12 +14,8 @@ import pickle
 import numpy as np
 import random
 
-# Model Train Lib
+# Model Load Lib
 import tensorflow
-from tensorflow.keras.models import Sequential
-from tensorflow.keras.layers import Dense, Activation, Dropout
-from tensorflow.keras.optimizers import SGD
-
 from train_bot import get_stem_words
 
 model = tensorflow.keras.models.load_model('./chatbot_model.h5')
