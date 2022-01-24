@@ -67,8 +67,8 @@ def create_bot_corpus(words, classes, pattern_word_tags_list, ignore_words):
 # Tags-----------> as Label
 
 def bag_of_words_encoding(stem_words, pattern_word_tags_list):
+    
     bag = []
-
     for word_tags in pattern_word_tags_list:
         # example: word_tags = (['hi', 'there'], 'greetings']
 
@@ -82,8 +82,8 @@ def bag_of_words_encoding(stem_words, pattern_word_tags_list):
             else:
                 bag_of_words.append(0)
     
-    bag.append(bag_of_words)
-
+        bag.append(bag_of_words)
+    
     return np.array(bag)
 
 def class_label_encoding(classes, pattern_word_tags_list):
@@ -104,12 +104,12 @@ def class_label_encoding(classes, pattern_word_tags_list):
         # Labels Encoding
         labels_encoding[tag_index] = 1
 
-    labels.append(labels_encoding)
-
+        labels.append(labels_encoding)
+        
     return np.array(labels)
 
 def preprocess_train_data():
-    # Calling methods
+  
     stem_words, tag_classes, word_tags_list = create_bot_corpus(words, classes, pattern_word_tags_list, ignore_words)
     
     # Convert Stem words and Classes to Python pickel file format
@@ -121,6 +121,6 @@ def preprocess_train_data():
     
     return train_x, train_y
 
-
+# preprocess_train_data()
 
 
