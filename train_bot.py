@@ -1,7 +1,7 @@
 # Model Training Lib
 from tensorflow.keras.models import Sequential
 from tensorflow.keras.layers import Dense, Activation, Dropout
-from tensorflow.keras.optimizers import SGD
+from tensorflow.keras.optimizers import Adam
 
 from data_preprocessing import preprocess_train_data
 
@@ -14,8 +14,7 @@ def train_bot_model(train_x, train_y):
     model.add(Dense(len(train_y[0]), activation='softmax'))
 
     # Compile Model
-    sgd = SGD(learning_rate=0.01, momentum=0.9)
-    model.compile(loss='categorical_crossentropy', optimizer=sgd, metrics=['accuracy'])
+    model.compile(loss='categorical_crossentropy', optimizer='adam', metrics=['accuracy'])
 
     # Fit & Save Model
     history = model.fit(train_x, train_y, epochs=200, batch_size=5, verbose=True)
