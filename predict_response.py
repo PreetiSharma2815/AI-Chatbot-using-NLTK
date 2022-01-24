@@ -30,9 +30,6 @@ intents = json.loads(open('./intents.json').read())
 words = pickle.load(open('./words.pkl','rb'))
 classes = pickle.load(open('./classes.pkl','rb'))
 
-print("Hi I am Stella, How Can I help you?")
-user_input = input("Type your message here:")
-
 
 def preprocess_user_input(user_input):
     input_word_token_1 = nltk.word_tokenize(user_input)
@@ -53,7 +50,7 @@ def preprocess_user_input(user_input):
   
     return np.array(bag)
     
-def bot_class_prediction():
+def bot_class_prediction(user_input):
     inp = preprocess_user_input(user_input)
     prediction = model.predict(inp)
 
@@ -62,9 +59,9 @@ def bot_class_prediction():
     return predicted_class_label
 
 
-def bot_response():
+def bot_response(user_imput):
 
-   predicted_class_label =  bot_class_prediction()
+   predicted_class_label =  bot_class_prediction(user_input)
 
    predicted_class = classes[predicted_class_label]
 
@@ -76,5 +73,15 @@ def bot_response():
     
         return bot_response
     
-bot_response = bot_response()
 
+
+print("Hi I am Stella, How Can I help you?")
+
+while True:
+    user_input = input("Type your message here:")
+    print("User Input: ", user_input)
+
+    if user_input:
+
+        response = bot_response(user_input)
+        print("Bot Response: ", response)
