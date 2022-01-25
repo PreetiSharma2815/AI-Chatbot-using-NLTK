@@ -73,11 +73,12 @@ def bag_of_words_encoding(stem_words, pattern_word_tags_list):
         # example: word_tags = (['hi', 'there'], 'greetings']
 
         pattern_words = word_tags[0] # ['hi', 'there']
+        stem_pattern_words = get_stem_words(pattern_words, ignore_words)
         bag_of_words = []
 
         # Input data encoding 
         for word in stem_words:            
-            if word in pattern_words:              
+            if word in stem_pattern_words:              
                 bag_of_words.append(1)
             else:
                 bag_of_words.append(0)
